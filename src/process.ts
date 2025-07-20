@@ -44,7 +44,10 @@ async function postToTwitter(statusText: string, twitterConfig: {
 const computePrevTime = async(currentDate: Date, logger: Logger, context: Context) => {
   const isScheduleEvent = context.eventName === 'schedule';
   if (isScheduleEvent) {
-    const diffMinutes = 5; // cover 5 minutes delay
+    const delayMinutesStr = core.getInput('DELAY_MINUTES', {
+      required: false
+    });
+    const diffMinutes = delayMinutesStr ? parseInt(delayMinutesStr, 10) : 5; // cover delay (default 5 minutes)
     const scheduleCron = context.payload.schedule;
     if (typeof scheduleCron !== 'string') {
       throw new Error('schedule.cron is not string');
