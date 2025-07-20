@@ -17,6 +17,10 @@ inputs:
     description: "Post only if the feed is updated within the specified minutes."
     default: "60"
     required: false
+  DELAY_MINUTES:
+    description: "Delay minutes to cover schedule drift. (default: 5)"
+    default: "5"
+    required: false
   # Twitter API token
   # Create your own Twitter App token from https://developer.twitter.com/en/portal/dashboard
   TWITTER_APIKEY:

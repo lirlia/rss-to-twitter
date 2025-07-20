@@ -57,6 +57,7 @@ jobs:
           RSS_URL: "https://hnrss.org/newest"
           TWEET_TEMPLATE: 'New Post: "%title%" %url%'
           UPDATE_WITHIN_MINUTES: 15 # for workflow_dispatch
+          DELAY_MINUTES: 7 # cron の遅延を考慮するための猶予時間（分）。デフォルトは 5 分。必要に応じて調整してください。
           TWITTER_APIKEY: ${{ secrets.TWITTER_APIKEY }}
           TWITTER_APIKEY_SECRET: ${{ secrets.TWITTER_APIKEY_SECRET }}
           TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
