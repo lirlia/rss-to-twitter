@@ -1,0 +1,55 @@
+# https://docs.github.com/en/free-pro-team@latest/actions/creating-actions/metadata-syntax-for-github-actions
+name: RSS To Twitter
+
+description: GitHub Actions posts twitter from RSS Feeds.
+
+author: azu
+
+inputs:
+  RSS_URL:
+    description: RSS URL to fetch.
+    required: true
+  TWEET_TEMPLATE:
+    description: "Template for tweet text. You can use %title%, %url%, %desc%"
+    default: '"%title%" %url%'
+    required: false
+  UPDATE_WITHIN_MINUTES:
+    description: "Post only if the feed is updated within the specified minutes."
+    default: "60"
+    required: false
+  DELAY_MINUTES:
+    description: "Delay minutes to cover schedule drift. (default: 5)"
+    default: "5"
+    required: false
+  # Twitter API token
+  # Create your own Twitter App token from https://developer.twitter.com/en/portal/dashboard
+  TWITTER_APIKEY:
+    description: Twitter API Key(App Key)
+    required: true
+  TWITTER_APIKEY_SECRET:
+    description: Twitter API Secret(App key secret)
+    required: true
+  TWITTER_ACCESS_TOKEN:
+    description: Twitter Access Token
+    required: true
+  TWITTER_ACCESS_TOKEN_SECRET:
+    description: Twitter Access Token Secret
+    required: true
+
+#outputs:
+#  result:
+#    description: action result
+
+branding:
+  # https://feathericons.com/
+  # e.g. https://haya14busa.github.io/github-action-brandings/
+  icon: 'package'
+  color: 'orange'
+
+runs:
+  using: node20
+  main: lib/main.js
+#  pre: lib/pre.js
+#  pre-if: 'runner.os == linux'
+#  post: lib/post.js
+#  post-if: 'success()'
